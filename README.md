@@ -15,12 +15,12 @@ Ainsi pour tester :
 
 - Arrivée sur page d'accueil : hello.jsp
 
-- Cliquer sur TESTSMA pour aller sur troisieme page login2.jsp
+- Cliquer sur TESTSMA pour aller sur page login2.jsp
 
-- Attendre l'expiration de session (paramétrable dans le web.xml, par défaut 10 secondes) puis cliquer sur le lien pour atteindre une troisième page (login3.jsp)
+- Attendre l'expiration de session (paramétrable dans le web.xml, par défaut 10 secondes) puis cliquer sur le lien pour atteindre une autre page (login3.jsp)
 
--  Redirection page de login
+- Redirection page de login suite expiration de session
 
-- Authentification avec succèes : redirection directement vers la page désirée : login3.jsp
+- Authentification avec succès : redirection directement vers la page désirée : login3.jsp
 
 Or actuellement on est redirigé vers la page d'accueil hello.jsp.
