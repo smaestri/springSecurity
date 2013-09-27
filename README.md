@@ -17,7 +17,7 @@ Ainsi pour tester :
 
 - Cliquer sur TESTSMA pour aller sur page login2.jsp
 
-- Attendre l'expiration de session (paramétrable dans le web.xml, par défaut 10 secondes) puis cliquer sur le lien pour atteindre une autre page (login3.jsp)
+- Attendre l'expiration de session (paramétrable dans le web.xml, par défaut 8 secondes) puis cliquer sur le lien pour atteindre une autre page (login3.jsp)
 
 - Redirection page de login suite expiration de session
 
