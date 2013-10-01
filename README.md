@@ -24,3 +24,38 @@ Ainsi pour tester :
 - Authentification avec succès : redirection directement vers la page désirée : login3.jsp
 
 Or actuellement on est redirigé vers la page d'accueil hello.jsp.
+
+
+Solution :
+
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-3.0.3.xsd">
+
+	<http>
+		 <intercept-url pattern="/login" filters="none"   />
+		 <intercept-url pattern="/**" access="ROLE_USER" />
+		<form-login
+		 	login-page="/login"
+		 	authentication-success-handler-ref="handlerTest"
+		 	authentication-failure-url="/loginfailed" />
+		 	<!-- always-use-default-target="false" -->
+			<!-- <session-management session-authentication-strategy-ref="sas" invalid-session-url="/login?erreur=sessionExpire" /> -->
+	</http>
+	
+	<beans:bean id="handlerTest" class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
+		<beans:property name="defaultTargetUrl" value ="/welcome"></beans:property>
+	</beans:bean>
+		
+	<authentication-manager>
+		<authentication-provider>
+			<user-service>
+				<user name="mkyong" password="123456" authorities="ROLE_USER" />
+			</user-service>
+		</authentication-provider>
+	</authentication-manager>
+
+</beans:beans>
