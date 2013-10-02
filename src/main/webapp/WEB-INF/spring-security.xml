@@ -5,23 +5,21 @@
 	http://www.springframework.org/schema/security
 	http://www.springframework.org/schema/security/spring-security-3.0.3.xsd">
 
-	<beans:bean id="handlerTest" class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
-		<beans:property name="defaultTargetUrl" value ="/welcome"></beans:property>
-	</beans:bean>
-	
 	<http>
-		<intercept-url pattern="/login" access="" filters="none"/>
-    	<intercept-url pattern="/**" access="ROLE_USER" />
+		 <intercept-url pattern="/login" filters="none"   />
+		 <intercept-url pattern="/**" access="ROLE_USER" />
 		<form-login
 		 	login-page="/login"
 		 	authentication-success-handler-ref="handlerTest"
 		 	authentication-failure-url="/loginfailed" />
 		 	<!-- always-use-default-target="false" -->
-		 	<!-- default-target-url="/welcome"-->
-		 	
-		<session-management invalid-session-url="/login?erreur=sessionExpire" />
+			<!-- <session-management session-authentication-strategy-ref="sas" invalid-session-url="/login?erreur=sessionExpire" /> -->
 	</http>
 	
+	<beans:bean id="handlerTest" class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
+		<beans:property name="defaultTargetUrl" value ="/welcome"></beans:property>
+	</beans:bean>
+		
 	<authentication-manager>
 		<authentication-provider>
 			<user-service>
